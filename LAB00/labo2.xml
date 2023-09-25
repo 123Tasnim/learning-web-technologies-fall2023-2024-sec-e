@@ -1,0 +1,31 @@
+<students>
+ <student>
+<slNo>23</slNo>
+<name>John Carter</name>
+<admissionDate>25/12/2015
+<Date>25</Date>
+<Month>12</Month>
+<Year>2015<Year>
+</admissionDate>
+</student>
+
+<student>
+<slNo>29</slNo>
+<name>Bob Marshal</name>
+<admissionDate>13/01/1999
+<Date>13</Date>
+<Month>01</Month>
+<Year>1999<Year>
+</admissionDate>
+</student>
+
+<student>
+<slNo>35</slNo>
+<name>Clark Kent</name>
+<admissionDate>17/06/2005
+<Date>17</Date>
+<Month>06</Month>
+<Year>2005<Year>
+</admissionDate>
+</student>
+</students>
