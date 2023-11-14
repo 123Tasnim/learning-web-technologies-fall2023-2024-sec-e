@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Person Profile Form</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th colspan="3">Person Profile</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td> <input type="text" id="name"></td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="mail"></td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" name="gender" id="male" value="male">
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" id="female" value="female">
+                <label for="female">Female</label>
+
+                <input type="radio" name="gender" id="other" value="other">
+                <label for="other">Other</label>
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td>
+                &nbsp; &nbsp; dd &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; mm &nbsp; &nbsp; yyyy
+                <br>
+                <input type="text" name="day" id="day" size="1"> /
+                <input type="text" name="month" id="month" size="1"> /
+                <input type="text" name="year" id="year" size="1">
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Blood Group</td>
+            <td>
+                <select id="Blood">
+                    <option value="option1">B+</option>
+                    <option value="option2">A+</option>
+                    <option value="option0" selected></option>
+                    <option value="option3">O+</option>
+                    <option value="option4">AB+</option>
+                </select>
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Degree</td>
+            <td>
+                <input type="checkbox" id="SSC">SSC
+                <input type="checkbox" id="HSC">HSC
+                <input type="checkbox" id="BSC">BSC
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td>Photo</td>
+            <td colspan="2">
+                
+                Picture <input type="file" id="pictureInput">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><br></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                <button onclick="validateForm()">Submit</button>
+                <button type="reset">Reset</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            
+            let name = document.getElementById('name').value;
+            let nameLen = name.split(' ');
+
+            if (!name) {
+                alert("Name cannot be empty");
+                isValid = false;
+            } else if (nameLen.length < 2) {
+                alert("Name has to contain at least two words");
+                isValid = false;
+            } else if (!checkFirstChar(name[0])) {
+                alert("Name must start with a letter");
+                isValid = false;
+            } else {
+                for (let i = 0; i < name.length; i++) {
+                    if (!checkChar(name[i])) {
+                        alert("Name can only contain letters (a-z, A-Z)");
+                        isValid = false;
+                        break;
+                    }
+                }
+            }
+
+
+            
+            let mail = document.getElementById('mail').value;
+            let atPos = mail.indexOf('@');
+            let dotPos = mail.lastIndexOf('.');
+            if (!mail || atPos === -1 || atPos === 0 || dotPos === -1 || dotPos <= atPos + 1 || dotPos === mail.length - 1) {
+                alert("Invalid Email");
+                isValid = false;
+            }
+
+            
+            let isMaleChecked = document.getElementById("male").checked;
+            let isFemaleChecked = document.getElementById("female").checked;
+            let isOtherChecked = document.getElementById("other").checked;
+            if (!isMaleChecked && !isFemaleChecked && !isOtherChecked) {
+                alert("Please select a gender option.");
+                isValid = false;
+            }
+
+            
+            let day = document.getElementById("day").value;
+            let month = document.getElementById("month").value;
+            let year = document.getElementById("year").value;
+
+            if (day === "" || month === "" || year === "") {
+                alert("Fields cannot be empty.");
+                isValid = false;
+            } else if (!checkNumber(day) || !checkNumber(month) || !checkNumber(year)) {
+                alert("Day, month, and year must be numeric.");
+                isValid = false;
+            } else {
+                day = parseInt(day);
+                month = parseInt(month);
+                year = parseInt(year);
+
+                if (day < 1 || day > 31) {
+                    alert("Invalid day");
+                    isValid = false;
+                }
+
+                if (month < 1 || month > 12) {
+                    alert("Invalid month");
+                    isValid = false;
+                }
+
+                if (year < 1900 || year > 2016) {
+                    alert("Invalid year");
+                    isValid = false;
+                }
+            }
+
+            
+            let selectedOption = document.getElementById("Blood").value;
+            if (selectedOption === "option0") {
+                alert("Please select a Blood Group.");
+                isValid = false;
+            }
+
+            
+            let sscChecked = document.getElementById("SSC").checked;
+            let hscChecked = document.getElementById("HSC").checked;
+            let bscChecked = document.getElementById("BSC").checked;
+            if (!sscChecked && !hscChecked && !bscChecked) {
+                alert("Please select at least one degree.");
+                isValid = false;
+            }
+
+            
+            
+            let pictureInput = document.getElementById("pictureInput").value;
+            if (pictureInput === "") {
+                alert("Invalid Photo details");
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        }
+
+        function checkChar(ch) {
+            if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z' || ch == '.' || ch == '_' || ch == ' ') return true;
+        }
+
+        function checkFirstChar(ch) {
+            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+        }
+        function checkNumber(ch) {
+            return ch >= '0' && ch <= '9';
+        }
+    </script>
+</body
