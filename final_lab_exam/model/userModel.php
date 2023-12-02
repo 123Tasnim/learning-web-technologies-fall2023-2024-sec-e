@@ -7,8 +7,8 @@
     function login($username, $password)
     {
         $con = getConnection();
-        
-        $sql = "SELECT * FROM employees WHERE username = '$username' AND password = '$password' ";
+        echo $username, $password;        
+        $sql = "SELECT * FROM employees WHERE username = '$username' and password = '$password'; ";
         $result = mysqli_query($con, $sql);
         $user = mysqli_fetch_assoc($result);
         
@@ -17,7 +17,7 @@
             $status = array(
                 'success' => true,
                 'id' => $user['id'],
-                'type' => $user['usertype']
+                'type' => $user['user_type']
             );
             return $status;
         } 

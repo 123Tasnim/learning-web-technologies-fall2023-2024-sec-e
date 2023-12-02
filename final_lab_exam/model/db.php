@@ -1,7 +1,7 @@
 <?php
 
     $dbhost = "localhost";
-    $dbname = "labfinal";
+    $dbname = "final";
     $dbuser = "root";
     $dbpass = "";
 
