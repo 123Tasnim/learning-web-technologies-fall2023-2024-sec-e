@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:lightblue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../Media/loginbg.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+form {
+    width: 25%;
+    padding: 20px;
+    border: 4px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out; /* Add transition for smooth effect */
+    margin-top: 15%;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+    form {
+        width: 40%; /* Increase the width to 40% on hover */
+    }
+}
+
+legend {
+    text-align: center;
+}
+
+fieldset {
+    width:80%;
+    margin-left: auto; 
+    margin-right: auto;
+}
